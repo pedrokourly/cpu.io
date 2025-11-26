@@ -1,16 +1,10 @@
 # 📊 Dashboard de Monitoramento de Sistemas em Tempo Real
 
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
 Sistema de observabilidade simulado para monitoramento de métricas de servidores em tempo real, desenvolvido como parte da **Atividade Prática 05** do curso.
 
 ## 🎬 Demonstração
 
-![Dashboard em Ação](./demo.gif)
-
-> **Nota:** Adicione seu GIF de demonstração na raiz do projeto com o nome `demo.gif` ou atualize o caminho acima.
+![Dashboard em Ação](./dashboard.gif)
 
 ## 📋 Descrição
 
