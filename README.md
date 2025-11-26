@@ -293,14 +293,4 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 
 ## 👨‍💻 Autor
 
-Desenvolvido como atividade prática do curso - **ATIVIDADE PRÁTICA 05**
-
----
-
-**Data de Entrega:** 24/11/2025
-
-**Tecnologias Principais:** Socket.io | Node.js | Express.js | Chart.js
-
----
-
-💡 **Dica:** Para a melhor experiência, use navegadores modernos como Chrome, Firefox ou Edge.
+Desenvolvido como atividade prática do curso - **ATIVIDADE PRÁTICA 05 - Tópicos Avançados de Sistemas**
