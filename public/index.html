@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Monitoramento - Sistema em Tempo Real</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Chart.js para visualização de gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Socket.io Client -->
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>
+                        <span class="icon">📊</span>
+                        Dashboard de Monitoramento
+                    </h1>
+                    <div class="subtitle">Sistema em Tempo Real</div>
+                </div>
+                <div class="header-right">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span id="connection-status">Conectando...</span>
+                    </div>
+                    <div class="users-count">
+                        <span class="icon">👥</span>
+                        <span id="users-online">0</span> online
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Métricas Principais -->
+            <section class="metrics-grid">
+                <!-- CPU -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">💻</span>
+                        <h3>CPU Usage</h3>
+                    </div>
+                    <div class="metric-value">
+                        <span id="cpu-value">0</span>
+                        <span class="metric-unit">%</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div id="cpu-bar" class="metric-bar-fill"></div>
+                    </div>
+                    <div class="metric-status" id="cpu-status">Normal</div>
+                </div>
+
+                <!-- Memory -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">🧠</span>
+                        <h3>Memory Usage</h3>
+                    </div>
+                    <div class="metric-value">
+                        <span id="memory-value">0</span>
+                        <span class="metric-unit">%</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div id="memory-bar" class="metric-bar-fill"></div>
+                    </div>
+                    <div class="metric-status" id="memory-status">Normal</div>
+                </div>
+
+                <!-- Requests -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">⚡</span>
+                        <h3>Requests/sec</h3>
+                    </div>
+                    <div class="metric-value">
+                        <span id="requests-value">0</span>
+                        <span class="metric-unit">req/s</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div id="requests-bar" class="metric-bar-fill"></div>
+                    </div>
+                    <div class="metric-status" id="requests-status">Normal</div>
+                </div>
+
+                <!-- Response Time -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-icon">⏱️</span>
+                        <h3>Response Time</h3>
+                    </div>
+                    <div class="metric-value">
+                        <span id="responseTime-value">0</span>
+                        <span class="metric-unit">ms</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div id="responseTime-bar" class="metric-bar-fill"></div>
+                    </div>
+                    <div class="metric-status" id="responseTime-status">Normal</div>
+                </div>
+            </section>
+
+            <!-- Gráficos -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <!-- CPU Chart -->
+                    <div class="chart-card">
+                        <h3>CPU Usage Over Time</h3>
+                        <canvas id="cpu-chart"></canvas>
+                    </div>
+
+                    <!-- Memory Chart -->
+                    <div class="chart-card">
+                        <h3>Memory Usage Over Time</h3>
+                        <canvas id="memory-chart"></canvas>
+                    </div>
+
+                    <!-- Requests Chart -->
+                    <div class="chart-card">
+                        <h3>Requests/sec Over Time</h3>
+                        <canvas id="requests-chart"></canvas>
+                    </div>
+
+                    <!-- Response Time Chart -->
+                    <div class="chart-card">
+                        <h3>Response Time Over Time</h3>
+                        <canvas id="responseTime-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Alertas e Logs -->
+            <section class="bottom-section">
+                <div class="bottom-grid">
+                    <!-- Alertas -->
+                    <div class="panel alerts-panel">
+                        <div class="panel-header">
+                            <h3>
+                                <span class="icon">🚨</span>
+                                Alertas Recentes
+                            </h3>
+                            <span class="badge" id="alerts-count">0</span>
+                        </div>
+                        <div class="panel-content" id="alerts-container">
+                            <div class="empty-state">Nenhum alerta no momento</div>
+                        </div>
+                    </div>
+
+                    <!-- Logs -->
+                    <div class="panel logs-panel">
+                        <div class="panel-header">
+                            <h3>
+                                <span class="icon">📝</span>
+                                Logs do Sistema
+                            </h3>
+                            <button id="clear-logs" class="btn-clear">Limpar</button>
+                        </div>
+                        <div class="panel-content logs-content" id="logs-container">
+                            <div class="empty-state">Aguardando logs...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Dashboard de Monitoramento em Tempo Real | Desenvolvido com Socket.io, Node.js e Express.js</p>
+        </div>
+    </footer>
+
+    <!-- Script Principal -->
+    <script src="/js/app.js"></script>
+</body>
+</html>
